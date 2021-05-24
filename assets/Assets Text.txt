@@ -1,1 +1,8 @@
-Add user stories here
+User Stories
+
+As a logged-out user, I want to be able to login or sign-up
+As a logged-in user, I want to be able to log-out
+As a logged-out user or logged-in user, I want to be able to browse items
+As a logged-out or logged-in user, I want to be able to search items (either by typing in or using drop downs depending on what we’re able to do)
+As a logged-in user, I want to be able to post an item with category, condition, dimension, price and other relevant info
+As a logged-in or logged-out user, I want to be able to contact the poster
