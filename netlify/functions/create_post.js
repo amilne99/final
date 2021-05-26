@@ -25,6 +25,7 @@ exports.handler = async function(event) {
   let price = event.queryStringParameters.price
   let description = event.queryStringParameters.desription
 
+
   // establish a connection to Firebase in memory
   let db = firebase.firestore()
 
@@ -43,7 +44,8 @@ exports.handler = async function(event) {
     imageUrl: imageUrl,
     price: price,
     description: description,
-    brand: brand
+    brand: brand,
+    created: firebase.firestore.FieldValue.serverTimestamp()
   }) 
 
   let returnValue = [] // sample only...
