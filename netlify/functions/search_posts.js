@@ -44,8 +44,33 @@ console.log(searchCategory)
         delivery: postData.delivery,
         imageUrl: postData.imageUrl,
         price: postData.price,
-        description: postData.description
+        description: postData.description,
+        comments: []
           }
+
+        // get the comments for the given post, wait for it to return and store in memory
+        let commentsQuery = await db.collection(`comments`).where(`postId`, `==`, postId).get()
+
+        // get the documents from the query
+        let comments = commentsQuery.docs
+    
+        // loop through the comment documents
+        for (let j=0; j < comments.length; j++) {
+          // get the id from the comment document
+          let commentId = comments[j].id
+    
+          // get the data from the documents
+          let commentData = comments[j].data()
+    
+         // create an object for the comment
+          let commentObject = {
+            id: commentId,
+            userName: commentData.userName,
+            body: commentData.body
+          }
+        // push to the object
+        postObject.comments.push(commentObject)
+        }
         // add the Object to the return value
     returnValue.push(postObject)
         }
