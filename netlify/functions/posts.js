@@ -16,17 +16,16 @@ exports.handler = async function(event) {
   let db = firebase.firestore()
 
   // perform a query against firestore for all posts, wait for it to return, store in memory
-  let postsQuery = await db.collection(`posts`).orderBy(`created`,`desc`).get()
-  //To do: Add in ordering by date created once we enter that info 
-  
-  //orderBy(`created`,`desc`)
+  let postsQuery = await db.collection(`posts`).get()
+
   // retrieve the documents from the query
   let posts = postsQuery.docs
 
   //loop through the post documents
-  for (let i=0;i<posts.length;i++){
+  for (let i=0;i<posts.length;i++)
 
-    // get the ID from the doc
+{    // get the ID from the doc
+    
     let postId = posts[i].id
 
     // get the data from the doc
@@ -34,7 +33,6 @@ exports.handler = async function(event) {
 
     // create an Object to be added to the return value
     let postObject = {
-      id: postId,
       userName: postData.userName,
       userId: postData.userId,
       category: postData.category,
@@ -48,9 +46,7 @@ exports.handler = async function(event) {
     // add the Object to the return value
     returnValue.push(postObject)
   }
-
   // Return the value of our lambda
-
   return {
     statusCode: 200,
     body: JSON.stringify(returnValue)
