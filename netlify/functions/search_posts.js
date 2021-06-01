@@ -7,9 +7,8 @@ let firebase = require('./firebase')
 exports.handler = async function(event) {
 
 // get the querystring parameters and store in memory
-  let searchTitle = event.queryStringParameters.searchTitle
+  let searchCondition = event.queryStringParameters.searchCondition
   let searchCategory = event.queryStringParameters.searchCategory
-
 
   // define an empty Array to hold the return value from lambda
   let returnValue = []
@@ -32,23 +31,19 @@ exports.handler = async function(event) {
     // get the data from the doc
     let postData = posts[i].data()
 
-    if ( //Conditional to check if a post matches the search title and category or just the search title if the category search is blank or just the category if the title search is blank
-        (postData.title.includes(searchTitle) && postData.category.includes(searchCategory)) || 
-        ((searchTitle = undefined || searchTitle.length == 0) && postData.category.includes(searchCategory))
-        ((searchCategory = undefined || searchCategory.length == 0) && postData.category.includes(searchTitle))
+    if ( //Conditional to check if a post matches the search category and condition or just the search condition if the category search is blank or just the category if the condition search is blank
+        (postData.condition.includes(searchCondition) && postData.category.includes(searchCategory)) || 
+        ((searchCondition = undefined || searchCondition.length == 0) && postData.category.includes(searchCategory))
+        ((searchCategory = undefined || searchCategory.length == 0) && postData.condition.includes(searchCondition))
         ) {
         // If the post matches, create an object and populate it with the relevant fields
         postObject = {
             userName: userName,
             userId: userId,
-            title: title,
             category: category,
             brand: brand,
             condition: condition,
             delivery: delivery,
-            dim_h: dim_h,
-            dim_l: dim_l,
-            dim_w: dim_w,
             imageUrl: imageUrl,
             price: price,
             description: description

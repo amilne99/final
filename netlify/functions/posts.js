@@ -34,14 +34,10 @@ exports.handler = async function(event) {
     let postObject = {
       userName: userName,
       userId: userId,
-      title: title,
       category: category,
       brand: brand,
       condition: condition,
       delivery: delivery,
-      dim_h: dim_h,
-      dim_l: dim_l,
-      dim_w: dim_w,
       imageUrl: imageUrl,
       price: price,
       description: description
