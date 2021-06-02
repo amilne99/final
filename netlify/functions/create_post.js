@@ -12,6 +12,7 @@ exports.handler = async function(event) {
 
   // get the querystring parameters and store in memory
   let userName = event.queryStringParameters.userName
+  let userId = event.queryStringParameters.userId
   let category = event.queryStringParameters.category
   let brand = event.queryStringParameters.brand
   let condition = event.queryStringParameters.condition
@@ -26,8 +27,9 @@ exports.handler = async function(event) {
 
   // create a new post, wait for it to return
   // Note: cleared out posts from KelloggGram content. Could also use "posts_final" to avoid confusion
-  await db.collection(`posts`).add ({
+  await db.collection(`posts`).add({
     userName: userName,
+    userId: userId,
     category: category,
     condition: condition,
     delivery: delivery,
@@ -38,7 +40,6 @@ exports.handler = async function(event) {
     created: firebase.firestore.FieldValue.serverTimestamp()
   }) 
 
-  let returnValue = [] // sample only...
   return {
     statusCode: 200,
   }
