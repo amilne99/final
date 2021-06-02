@@ -1,4 +1,6 @@
-window.addEventListener('DOMContentLoaded', async function() {
+firebase.auth().onAuthStateChanged(async function(user) {
+
+    if (user) {
 
  // get a reference to the "Create Post" button
  let createPostButton = document.querySelector(`.createPost`)
@@ -8,12 +10,6 @@ window.addEventListener('DOMContentLoaded', async function() {
    
     // prevent the default behavior (submitting the form)
     event.preventDefault()
-
-    // Get a reference to the input holding the fullname
-    let fullnameInput = document.querySelector(`#fullname`)
- 
-    // store the user-inputted Category in memory
-    let fullname = fullnameInput.value
     
     // Get a reference to the input holding the category
     let categoryInput = document.querySelector(`#category`)
@@ -58,14 +54,22 @@ window.addEventListener('DOMContentLoaded', async function() {
      let condition = conditionInput.value
 
     // create the URL for our "create post" lambda function
-    let url = `/.netlify/functions/create_post?userName=${fullname}&category=${category}&brand=${brand}&condition=${condition}&delivery=${delivery}&imageUrl=${imageURL}&price=${price}&description=${description}`
+    let url = `/.netlify/functions/create_post?userName=${user.displayName}&userID=${user.uid}category=${category}&brand=${brand}&condition=${condition}&delivery=${delivery}&imageUrl=${imageURL}&price=${price}&description=${description}`
 
     // fetch the URL, wait for the response, store the response in memory
+
     let response = await fetch(url)
 
     // refresh the page
     console.log(`the code is over`)
 
 })
+
+}
+else {
+
+    document.location.href = `index.html`
+    
+}
 
 })
