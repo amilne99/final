@@ -1,7 +1,7 @@
 //Goal: Provide a function to create a new comment in firebase
 
 // Allows us to use firebase
-let firebase = require('./firebase')
+let firebase = require(`./firebase`)
 
 //For this to work, I need to be passed: userName, userId (from user info), postId (from the post), and comment body (from the form)
 
@@ -12,7 +12,7 @@ exports.handler = async function(event) {
   let userName = event.queryStringParameters.userName
   let userId = event.queryStringParameters.userId
   let postId = event.queryStringParameters.postId
-  let commentBody = event.queryStringParameters.body
+  let commentBody = event.queryStringParameters.commentBody
 
 
 
@@ -29,7 +29,6 @@ exports.handler = async function(event) {
     created: firebase.firestore.FieldValue.serverTimestamp()
   }) 
 
-  let returnValue = [] 
   return {
     statusCode: 200,
   }

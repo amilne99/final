@@ -1,7 +1,7 @@
 //Goal: Provide a function to create a new post in Firebase
 
 // Allows us to use firebase
-let firebase = require('./firebase')
+let firebase = require(`./firebase`)
 
 // To add: What to do if some of the fields are left blank? Pass through with blanks or return error message? 
 
@@ -19,7 +19,7 @@ exports.handler = async function(event) {
   let delivery = event.queryStringParameters.delivery
   let imageUrl = event.queryStringParameters.imageUrl
   let price = event.queryStringParameters.price
-  let description = event.queryStringParameters.desription
+  let description = event.queryStringParameters.description
 
 
   // establish a connection to Firebase in memory
