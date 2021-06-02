@@ -76,7 +76,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
       <p class="category text-sm font-hairline text-gray-600 mt-1">${jsonallposts[i].category} - 
       </p>
   </div>
-    <p class="postDate text-sm font-hairline text-gray-600 mt-1">{postDate}
+    <p class="postDate text-sm font-hairline text-gray-600 mt-1">${jsonallposts[i].created}
     </p>
   </div>
   <div class="flex justify-center mt-4">
