@@ -23,7 +23,22 @@ firebase.auth().onAuthStateChanged(async function(user) {
       // redirect to the home page
       document.location.href = `index.html`
     })
-    
+
+    // Build the markup for the new post button and set the HTML in the header
+    document.querySelector(`.newpost`).innerHTML = `
+      <button class="text-pink-500 underline sign-out">New Post</button>
+    `
+
+    // get a reference to the new post button
+    let newpostButton = document.querySelector(`.newpost`)
+
+    // handle the new post button click - redirect to postinput page
+    newpostButton.addEventListener(`click`, function(event) {
+
+      document.location.href = `postInput.html`
+
+    })
+
     // fetch all Json posts 
 
   let allpostsurl = `.netlify/functions/posts`
