@@ -26,7 +26,7 @@ exports.handler = async function(event) {
 
   // create a new post, wait for it to return
   // Note: cleared out posts from KelloggGram content. Could also use "posts_final" to avoid confusion
-  await db.collection(`posts`).add({
+  await db.collection(`posts`).add ({
     userName: userName,
     category: category,
     condition: condition,

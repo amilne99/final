@@ -64,7 +64,7 @@ window.addEventListener('DOMContentLoaded', async function() {
     let response = await fetch(url)
 
     // refresh the page
-    location.reload()
+    console.log(`the code is over`)
 
 })
 
