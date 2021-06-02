@@ -10,7 +10,6 @@ exports.handler = async function(event) {
 
   // get the querystring parameters and store in memory
   let userName = event.queryStringParameters.userName
-  let userId = event.queryStringParameters.userId
   let postId = event.queryStringParameters.postId
   let commentBody = event.queryStringParameters.commentBody
 
@@ -23,7 +22,6 @@ exports.handler = async function(event) {
   // Note: cleared out comments from KelloggGram content and added 2 dummy comments to test
   await db.collection(`comments`).add({
     userName: userName,
-    userId: userId,
     postId: postId,
     body: commentBody,
     created: firebase.firestore.FieldValue.serverTimestamp()

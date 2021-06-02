@@ -42,6 +42,7 @@ exports.handler = async function(event) {
       imageUrl: postData.imageUrl,
       price: postData.price,
       description: postData.description,
+      created : postData.created,
       comments: []
     }
         // get the comments for the given post, wait for it to return and store in memory
