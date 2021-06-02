@@ -59,7 +59,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     let post = jsonallposts[i]
 
-    let postId = post.id 
+    let postId = post.id
 
     let comments = ``
 
@@ -141,7 +141,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     // Build the URL for our comments API
     console.log(`${postId}`)
 
-    let url = `/.netlify/functions/create_comment?userName=${user.displayName}&postId=${postId}&commentBody=${commentBody}`
+    let url = `/.netlify/functions/create_comment?userName=${user.displayName}&userId=${user.uid}&postId=${postId}&commentBody=${commentBody}`
 
     let response = await fetch(url)
 
