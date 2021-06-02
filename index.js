@@ -7,6 +7,23 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     console.log(user)
 
+    // Build the markup for the sign-out button and set the HTML in the header
+    document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
+      <button class="text-pink-500 underline sign-out">Sign Out</button>
+    `
+
+    // get a reference to the sign out button
+    let signOutButton = document.querySelector(`.sign-out`)
+
+    // handle the sign out button click
+    signOutButton.addEventListener(`click`, function(event) {
+      // sign out of firebase authentication
+      firebase.auth().signOut()
+
+      // redirect to the home page
+      document.location.href = `index.html`
+    })
+    
     // fetch all Json posts 
 
   let allpostsurl = `.netlify/functions/posts`
@@ -107,13 +124,13 @@ firebase.auth().onAuthStateChanged(async function(user) {
     let commentBody = commentInput.value
 
     // Build the URL for our comments API
-console.log(user.userName)
+    console.log(`${postId}`)
 
     let url = `/.netlify/functions/create_comment?userName=${user.displayName}&postId=${postId}&commentBody=${commentBody}`
 
     let response = await fetch(url)
 
-    location.reload ()
+    // location.reload ()
 
 })
 
