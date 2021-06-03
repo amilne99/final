@@ -35,10 +35,27 @@
   <script src="index.js"></script>
   <div class="flex justify-between flex-wrap p-8">
     <p class="text-gray-600 font-bold mt-2 text-2xl text-left">Input Criteria: </p>
-    <input class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" type="text" id="item-type" name="item-type" placeholder ="Item Type"> 
+    <!-- <input class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" type="text" id="item-type" name="item-type" placeholder ="Item Type">  -->
     <!-- <input class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" type="text" id="subitem-type" name="subitem-type" placeholder ="Sub-Item Type"> -->
     <!-- <input class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" type="text" id="pickuplocation" name="pickuplocation" placeholder ="Pickup Location"> -->
-    <input class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" type="text" id="condition" name="condition" placeholder ="Condition">   
+    <!-- <input class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" type="text" id="condition" name="condition" placeholder ="Condition">  -->
+    <input list="types" class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" name="type" id="type" placeholder="Type">
+    <datalist id="types">
+      <option value="Furniture">
+      <option value="Clothing">
+      <option value="Computer">
+      <option value="Vehicles">
+      <option value="Sports">
+      <option value="Art">
+    </datalist>
+      <input list="conditions" class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" name="condition" id="condition" placeholder="Condition">
+      <datalist id="conditions">
+        <option value="Brand New">
+        <option value="Lightly Used">
+        <option value="Moderate Use">
+        <option value="Heavily Used">
+      </datalist>
+
     <button class="search bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded shadow-xl focus:outline-none focus:shadow-outline" type="button">
       SEARCH
     </button>
