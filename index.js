@@ -58,8 +58,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
   for (let i=0; i < jsonallposts.length; i++ ) { 
 
     let post = jsonallposts[i]
-
-    let postId = post.id
+    
+    let postId = jsonallposts[i].id 
+    
+    console.log(post)
 
     let comments = ``
 
@@ -70,6 +72,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
     comments = comments + `<div><strong>${comment.userName} : </strong> ${comment.body}</div>`
 
   }
+  
+
   postdiv.insertAdjacentHTML(`beforeend`,`<div class=" postdiv lg:right-1/4 centered bg-white shadow p-4 rounded s:w-full s:mt-4 m:w-full m:mt-4 lg:mx-auto lg:mt-4 lg:w-1/2">
   <div class="text-center mt-4">
     <div class="flex justify-center">
@@ -117,9 +121,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
   ${comments}
 
   <div class="addComment mt-6 border-gray-100 border-t pt-4 flex justify-between">
-    <input placeholder="Add comment" class=" comment-${postId} placeholder-gray-300 text-gray-700 focus:outline-none" type="text">
+    <input placeholder="Add comment" class="comment-${postId} placeholder-gray-300 text-gray-700 focus:outline-none" type="text">
     <div class="flex">
-      <button class=" post-comment-button-${postId} addCommentButton rounded shadow-md items-center shadow font-bold bg-gradient-to-r from-pink-500 to-pink-500 px-4 py-2 text-white hover:bg-purple-500 ">ADD</button>
+      <button class="post-comment-button-${postId} addCommentButton rounded shadow-md items-center shadow font-bold bg-gradient-to-r from-pink-500 to-pink-500 px-4 py-2 text-white hover:bg-purple-500 ">ADD</button>
   </div>
   </div>
   </div>`)
@@ -132,6 +136,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     event.preventDefault()
     
+    console.log("someone clicked")
     // get a reference to the newly created comment input
     let commentInput = document.querySelector(`.comment-${postId}`)
 
@@ -144,7 +149,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     let response = await fetch(url)
 
-    // location.reload ()
+    location.reload ()
 
 })
 
