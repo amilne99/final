@@ -61,7 +61,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
     let response = await fetch(url)
 
     // refresh the page
-    console.log(`the code is over`)
+    
+    location.reload ()
 
 })
 
