@@ -59,9 +59,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     let post = jsonallposts[i]
     
-    let postId = jsonallposts[i].id 
-    
-    console.log(post)
+    let postId = jsonallposts[i].id
 
     let comments = ``
 
@@ -147,7 +145,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     let url = `/.netlify/functions/create_comment?userName=${user.displayName}&userId=${user.uid}&postId=${postId}&commentBody=${commentBody}`
 
-    let response = await fetch(url)
+    await fetch(url)
 
     location.reload ()
 
