@@ -12,7 +12,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     event.preventDefault()
     
     // Get a reference to the input holding the category
-    let categoryInput = document.querySelector(`#category`)
+    let categoryInput = document.querySelector(`#typeCreatePost`)
  
     // store the user-inputted Category in memory
     let category = categoryInput.value
@@ -42,19 +42,19 @@ firebase.auth().onAuthStateChanged(async function(user) {
     let brand = brandInput.value
 
      // Get a reference to the input holding the delivery
-     let deliveryInput = document.querySelector(`#delivery`)
+     let deliveryInput = document.querySelector(`#deliveryCreatePost`)
  
      // store the user-inputted delivery in memory
      let delivery = deliveryInput.value
 
      // Get a reference to the input holding the condition
-     let conditionInput = document.querySelector(`#condition`)
+     let conditionInput = document.querySelector(`#conditionCreatePost`)
  
      // store the user-inputted delivery in memory
      let condition = conditionInput.value
 
     // create the URL for our "create post" lambda function
-    let url = `/.netlify/functions/create_post?userName=${user.displayName}&userID=${user.uid}category=${category}&brand=${brand}&condition=${condition}&delivery=${delivery}&imageUrl=${imageURL}&price=${price}&description=${description}`
+    let url = `/.netlify/functions/create_post?userName=${user.displayName}&userID=${user.uid}&category=${category}&brand=${brand}&condition=${condition}&delivery=${delivery}&imageUrl=${imageURL}&price=${price}&description=${description}`
 
     // fetch the URL, wait for the response, store the response in memory
 
