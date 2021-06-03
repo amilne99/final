@@ -33,6 +33,7 @@ exports.handler = async function(event) {
 
     // create an Object to be added to the return value
     let postObject = {
+      id: postId,
       userName: postData.userName,
       userId: postData.userId,
       category: postData.category,
