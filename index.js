@@ -139,7 +139,6 @@ firebase.auth().onAuthStateChanged(async function(user) {
     let commentBody = commentInput.value
 
     // Build the URL for our comments API
-    console.log(`${postId}`)
 
     let url = `/.netlify/functions/create_comment?userName=${user.displayName}&userId=${user.uid}&postId=${postId}&commentBody=${commentBody}`
 
