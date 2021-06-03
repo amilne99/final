@@ -55,12 +55,15 @@
         <label class="category block text-gray-600 text-sm font-semibold mb-2" for="category">
           Category
         </label>
-        <input
-          class="bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="category"
-          type="text"
-          placeholder="Select Category"
-        >
+        <input list="typesPostInput" class="bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="typeCreatePost" id="typeCreatePost" placeholder="Select Type">
+        <datalist id="typesPostInput">
+          <option value="Furniture">
+          <option value="Clothing">
+          <option value="Computer">
+          <option value="Vehicles">
+          <option value="Sports">
+          <option value="Art">
+        </datalist>
       </div>
       <div class="mb-4">
         <label class="description block text-gray-600 text-sm font-semibold mb-2" for="description">
@@ -110,23 +113,23 @@
         <label class="delivery block text-gray-600 text-sm font-semibold mb-2" for="delivery">
           Delivery Available?
         </label>
-        <input
-          class="bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="delivery"
-          type="text"
-          placeholder="Select Yes/No"
-        >
+        <input list="deliveryPostInput" class="bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="deliveryCreatePost" id="deliveryCreatePost" placeholder="Yes/No">
+        <datalist id="deliveryPostInput">
+          <option value="Yes">
+          <option value="No">
+        </datalist>
       </div>
       <div class="mb-4">
         <label class="condition block text-gray-600 text-sm font-semibold mb-2" for="condition">
           Condition
         </label>
-        <input
-          class="bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="condition"
-          type="text"
-          placeholder="Select condition"
-        >
+        <input list="conditionsPostInput" class="bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="conditionCreatePost" id="conditionCreatePost" placeholder="Select Condition">
+        <datalist id="conditionsPostInput">
+          <option value="Brand New">
+          <option value="Lightly Used">
+          <option value="Moderate Use">
+          <option value="Heavily Used">
+        </datalist>
       </div>
 
       
