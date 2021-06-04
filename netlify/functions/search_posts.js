@@ -19,8 +19,8 @@ console.log(searchCategory)
   let db = firebase.firestore()
 
   // perform a query against firestore for all posts matching the criteria passed through, wait for it to return, store in memory
-  let postsQuery = await db.collection(`posts`).where(`category`,`==`,searchCategory).get()
-
+  let postsQuery = await db.collection(`posts`).get()
+//.where(`category`,`==`,searchCategory)
   let posts = postsQuery.docs
 
   //loop through the post documents
@@ -32,7 +32,9 @@ console.log(searchCategory)
     // get the data from the doc
     let postData = posts[i].data()
 
-    if(postData.condition.includes(searchCondition)){
+    if((postData.condition.includes(searchCondition)||(searchCondition==undefined))&&
+    (postData.category.includes(searchCategory)||(searchCategory==undefined))
+    ){
     
     postObject = {
         id: postId,  
