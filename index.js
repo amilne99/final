@@ -71,7 +71,12 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
   }
   
-
+  console.log(post.created)
+  let dateFunction = Date(post.created.seconds)
+  //let actualDate = date.getDate()
+  console.log(dateFunction)
+  //console.log(actualDate)
+ 
   postdiv.insertAdjacentHTML(`beforeend`,`<div class=" postdiv lg:right-1/4 centered bg-white shadow p-4 rounded s:w-full s:mt-4 m:w-full m:mt-4 lg:mx-auto lg:mt-4 lg:w-1/2">
   <div class="text-center mt-4">
     <div class="flex justify-center">

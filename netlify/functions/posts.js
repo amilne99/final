@@ -16,8 +16,9 @@ exports.handler = async function(event) {
   let db = firebase.firestore()
 
   // perform a query against firestore for all posts, wait for it to return, store in memory
-  let postsQuery = await db.collection(`posts`).get()
-
+  // Make sure posts are sorted by date created
+  let postsQuery = await db.collection(`posts`).orderBy(`created`, `desc`).get()
+  //
   // retrieve the documents from the query
   let posts = postsQuery.docs
 
@@ -47,8 +48,10 @@ exports.handler = async function(event) {
       comments: []
     }
         // get the comments for the given post, wait for it to return and store in memory
-        let commentsQuery = await db.collection(`comments`).where(`postId`, `==`, postId).get()
+        let commentsQuery = await db.collection(`comments`).where(`postId`, `==`, postId).orderBy(`created`, `asc`).get()
 
+      //
+      //Getting an error when I try to add 
         // get the documents from the query
         let comments = commentsQuery.docs
     
