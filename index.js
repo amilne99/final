@@ -77,7 +77,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
   console.log(dateFunction)
   //console.log(actualDate)
  
-  postdiv.insertAdjacentHTML(`beforeend`,`<div class=" postdiv lg:right-1/4 centered bg-white shadow p-4 rounded s:w-full s:mt-4 m:w-full m:mt-4 lg:mx-auto lg:mt-4 lg:w-1/2">
+  postdiv.insertAdjacentHTML(`beforeend`,`<div class=" postdiv lg:right-1/4 centered bg-white shadow p-4 rounded s:w-full s:mt-4 m:w-full m:mt-4 lg:mx-auto lg:mt-4 lg:w-3/4">
   <div class="text-center mt-4">
     <div class="flex justify-center">
       <p class="category text-l font-hairline font-bold text-gray-600 mt-1">${jsonallposts[i].category} 
@@ -167,7 +167,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     let contactdiv = document.querySelector(`.testContact`)
 
-    contactdiv.insertAdjacentHTML(`beforeend`,`<div class="text-center p-6"> You can reach the person who posted this ${jsonallposts[i].category} at: <strong>${jsonallposts[i].userEmail}<strong></div>`)
+    postdiv.insertAdjacentHTML(`afterbegin`,`<div class="text-center p-6"> You can reach the person who posted this ${jsonallposts[i].category} at: <strong>${jsonallposts[i].userEmail}<strong></div>`)
 
   }) 
  
