@@ -117,7 +117,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
   </div>
   <div class="mt-6">
     <form>
-      <button class="contact-button-${postId} rounded shadow-md w-full items-center shadow font-bold bg-purple-500 px-4 py-2 text-white hover:bg-purple-400">CONTACT</button>
+      <button class="contact-button-${postId} rounded shadow-md w-full items-center shadow font-bold bg-purple-500 px-4 py-2 text-white hover:bg-purple-400">CONTACT INFO</button>
     </form>  
   </div>
 
@@ -167,7 +167,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     let contactdiv = document.querySelector(`.testContact`)
 
-    postdiv.insertAdjacentHTML(`afterbegin`,`<div class="text-center p-6"> You can reach the person who posted this ${jsonallposts[i].category} at: <strong>${jsonallposts[i].userEmail}<strong></div>`)
+    postdiv.insertAdjacentHTML(`afterbegin`,`<div class="text-center p-6"> You can reach the person who posted this "${jsonallposts[i].category} (${jsonallposts[i].description})" at: <strong>${jsonallposts[i].userEmail}<strong></div>`)
 
   }) 
  
