@@ -20,6 +20,7 @@ exports.handler = async function(event) {
   let imageUrl = event.queryStringParameters.imageUrl
   let price = event.queryStringParameters.price
   let description = event.queryStringParameters.description
+  let userEmail = event.queryStringParameters.userEmail
 
 
   // establish a connection to Firebase in memory
@@ -29,6 +30,7 @@ exports.handler = async function(event) {
   // Note: cleared out posts from KelloggGram content. Could also use "posts_final" to avoid confusion
   await db.collection(`posts`).add({
     userName: userName,
+    userEmail: userEmail,
     userId: userId,
     category: category,
     condition: condition,

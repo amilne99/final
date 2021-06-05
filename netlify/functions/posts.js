@@ -36,6 +36,7 @@ exports.handler = async function(event) {
     let postObject = {
       id: postId,
       userName: postData.userName,
+      userEmail: postData.userEmail,
       userId: postData.userId,
       category: postData.category,
       brand: postData.brand,

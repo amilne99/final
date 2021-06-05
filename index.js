@@ -80,14 +80,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
   postdiv.insertAdjacentHTML(`beforeend`,`<div class=" postdiv lg:right-1/4 centered bg-white shadow p-4 rounded s:w-full s:mt-4 m:w-full m:mt-4 lg:mx-auto lg:mt-4 lg:w-1/2">
   <div class="text-center mt-4">
     <div class="flex justify-center">
-      <p class="category text-sm font-hairline text-gray-600 mt-1">${jsonallposts[i].category} - 
+      <p class="category text-l font-hairline font-bold text-gray-600 mt-1">${jsonallposts[i].category} 
       </p>
   </div>
-    <p class="postDate text-sm font-hairline text-gray-600 mt-1">${jsonallposts[i].created}
+    <p class="postDescription text-m font-hairline text-gray-600 mt-1">${jsonallposts[i].description}
     </p>
   </div>
   <div class="flex justify-center mt-4">
-    <img class="postImage shadow sm:w-1/2 sm:h-1/2 w-1/2 h-1/2 square-full" src=${jsonallposts[i].imageUrl}>
+    <img class="postImage shadow w-1/2 h-1/2 sm:w-1/2 sm:h-1/2 square-full" src=${jsonallposts[i].imageUrl}>
   </div>
   <div class="mt-6 flex flex-wrap justify-between text-center">
     <div>
@@ -116,9 +116,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
     </div>
   </div>
   <div class="mt-6">
-    <button class="rounded shadow-md w-full items-center shadow font-bold bg-purple-500 px-4 py-2 text-white hover:bg-purple-400">
-      CONTACT
-    </button>
+    <form>
+      <button class="contact-button-${postId} rounded shadow-md w-full items-center shadow font-bold bg-purple-500 px-4 py-2 text-white hover:bg-purple-400">CONTACT</button>
+    </form>  
   </div>
 
   ${comments}
@@ -156,31 +156,24 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
 })
 
+  let contactButton = document.querySelector(`.contact-button-${postId}`)
+  
+
+  contactButton.addEventListener(`click`, async function(event) {
+
+    event.preventDefault()
+    
+    console.log("someone clicked contact")
+
+    let contactdiv = document.querySelector(`.testContact`)
+
+    contactdiv.insertAdjacentHTML(`beforeend`,`<div class="text-center p-6"> You can reach the person who posted this ${jsonallposts[i].category} at: <strong>${jsonallposts[i].userEmail}<strong></div>`)
+
+  }) 
+ 
 }
 
 }
-
-
-
-
-  
-  
-    //Section: Show sign out button and handle if it's clicked
-
-    //Section to Post Items: Post all products using the posts.js lambda function (`/.netlify/functions/posts`) and a loop to post all the posts with insterAdjacentHTML
-
-
-    //Section to Create Post: If the user submits a posting, handle the click, send the information to create_post.js lambda function
-    //Note: This section should go as a different file (ex: postInput.js) now that posting will be a separate page)
-      //URL Format:  /.netlify/functions/create_post?userName=Brian&userId=_______&imageUrl=____&brand=____&category=_____.....
-      //Info needed: brand, category, condition, delivery, photo URL, price, and description from form and usename/userId from info all from index.js
-
-    //Section to Search and Return Results: If the user clicks the search button, send the search information to the search_posts.js lambda function (/.netlify/functions/search_posts), then clear all the innerHTML, and go through loop to insertAdjacentHTML and post only those returned by this lambda function
-      //URL format: /.netlify/functions/search_posts?searchCondition=______&searchCategory=_______
-      //For now I'm assuming we will just let them search for words in the title and category, but we can always scale up with more fields
-
-
-
 
   else {
     // Signed out

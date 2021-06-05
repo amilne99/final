@@ -54,7 +54,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
      let condition = conditionInput.value
 
     // create the URL for our "create post" lambda function
-    let url = `/.netlify/functions/create_post?userName=${user.displayName}&userId=${user.uid}&category=${category}&brand=${brand}&condition=${condition}&delivery=${delivery}&imageUrl=${imageURL}&price=${price}&description=${description}`
+    let url = `/.netlify/functions/create_post?userName=${user.displayName}&userId=${user.uid}&userEmail=${user.email}&category=${category}&brand=${brand}&condition=${condition}&delivery=${delivery}&imageUrl=${imageURL}&price=${price}&description=${description}`
 
     // fetch the URL, wait for the response, store the response in memory
 
