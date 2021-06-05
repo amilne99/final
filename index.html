@@ -11,9 +11,10 @@
 
 <body>
   
-    <div class="ml-auto text-sm sign-in-or-sign-out"></div>
-    <div class="ml-auto text-sm newpost"></div>
- 
+  <div class="flex justify-between flex-wrap p-2">  
+    <div class=" ml-2 text-sm newpost"></div>
+  <div class=" ml-2 text-sm sign-in-or-sign-out"></div>
+  </div>
   <!-- Put the Firebase config here -->
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
@@ -35,11 +36,7 @@
   <script src="index.js"></script>
   <div class="flex justify-between flex-wrap p-8">
     <p class="text-gray-600 font-bold mt-2 text-2xl text-left">Input Criteria: </p>
-    <!-- <input class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" type="text" id="item-type" name="item-type" placeholder ="Item Type">  -->
-    <!-- <input class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" type="text" id="subitem-type" name="subitem-type" placeholder ="Sub-Item Type"> -->
-    <!-- <input class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" type="text" id="pickuplocation" name="pickuplocation" placeholder ="Pickup Location"> -->
-    <!-- <input class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" type="text" id="condition" name="condition" placeholder ="Condition">  -->
-    <input list="types" class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 leading-tight focus:outline-none" name="type" id="type" placeholder="Category">
+    <input list="types" class="rounded-full shadow-xl md:mx-4 mx-4 p-2 w-64 py-4 px-6 text-gray-700 my-2 leading-tight focus:outline-none" name="type" id="type" placeholder="Category">
     <datalist id="types">
       <option value="Furniture">
       <option value="Clothing">
@@ -59,8 +56,8 @@
     <button class="search bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded shadow-xl focus:outline-none focus:shadow-outline" type="button">
       SEARCH
     </button>
-    <p class=" font-bold mt-2 text-2xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-500 text-right">Kellogg Marketplace</p></div> 
-    <div class=" postdiv lg:right-1/4 centered bg-white shadow p-4 rounded s:w-full s:mt-4 m:w-full m:mt-4 lg:mx-auto lg:mt-4 lg:w-1/2">
+    <p class="font-bold mt-2 text-2xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-500 text-right">Kellogg Marketplace</p></div> 
+    <div class="postdiv lg:right-1/4 centered bg-white shadow p-4 rounded s:w-full s:mt-4 m:w-full m:mt-4 lg:mx-auto lg:mt-4 lg:w-1/2">
       <div class="text-center mt-4">
         <div class="flex justify-center">
       </div>

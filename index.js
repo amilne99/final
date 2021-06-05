@@ -9,7 +9,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     // Build the markup for the sign-out button and set the HTML in the header
     document.querySelector(`.sign-in-or-sign-out`).innerHTML = `
-      <button class="text-pink-500 underline sign-out">Sign Out</button>
+      <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 mx-2 my-2 px-4 rounded focus:outline-none focus:shadow-outline sign-out">Sign Out</button>
     `
 
     // get a reference to the sign out button
@@ -26,7 +26,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     // Build the markup for the new post button and set the HTML in the header
     document.querySelector(`.newpost`).innerHTML = `
-      <button class="text-pink-500 underline sign-out">New Post</button>
+      <button class="bg-green-500 hover:bg-green-700 text-white font-bold mx-2 my-2 py-2 px-4 rounded focus:outline-none focus:shadow-outline sign-out">New Post</button>
     `
 
     // get a reference to the new post button
