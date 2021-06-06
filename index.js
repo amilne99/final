@@ -39,6 +39,145 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
     })
 
+    // Before looking for the search button, pull all posts for the viewer
+
+    // Post all posts prior to any searches being clicked
+    //fetch all Json posts 
+    let allpostsurl = `.netlify/functions/posts`
+
+    let response = await fetch (allpostsurl)
+
+    let jsonallposts = await response.json ()
+
+    // Check that json all posts is being pulled
+    console.log (jsonallposts.length)
+
+    let allpostdiv = document.querySelector(`.postdiv`)
+
+    for (let i=0; i < jsonallposts.length; i++ ) { 
+
+      let post = jsonallposts[i]
+      
+      let postId = jsonallposts[i].id
+  
+      let comments = ``
+  
+      for (let i=0; i< post.comments.length; i++) {
+      
+      let comment = post.comments[i]
+  
+      comments = comments + `<div><strong>${comment.userName}</strong>: ${comment.body}</div>`
+  
+    }
+    
+    let postDate = new Date(jsonallposts[i].created.seconds * 1000)
+    postDate = postDate.toDateString()
+   
+    allpostdiv.insertAdjacentHTML(`beforeend`,`<div class=" postdiv lg:right-1/4 centered bg-white shadow p-4 rounded s:w-full s:mt-4 m:w-full m:mt-4 lg:mx-auto lg:mt-4 lg:w-3/4">
+    <div class="text-center mt-4">
+      <div class="flex justify-center">
+        <p class="category text-l font-hairline font-bold text-gray-600 mt-1">${jsonallposts[i].category} 
+        </p>
+    </div>
+      <p class="postDescription text-m font-hairline text-gray-600 mt-1">${jsonallposts[i].description}
+      <p class="postDate text-m font-hairline text-gray-600 mt-1"><strong>Posted on:</strong> ${postDate}
+      </p>
+    </div>
+  
+    <div class="flex justify-center mt-4">
+      <img class="postImage shadow w-1/2 h-1/2 sm:w-1/2 sm:h-1/2 square-full" src=${jsonallposts[i].imageUrl}>
+    </div>
+    <div class="mt-6 flex flex-wrap justify-between text-center">
+      <div>
+        <p class="text-gray-700 font-bold">Brand
+        </p>
+        <p class="brand text-m mt-2 text-gray-600 font-hairline">${jsonallposts[i].brand}
+        </p>
+      </div>
+      <div>
+        <p class="text-gray-700 font-bold">Price
+        </p>
+        <p class="price text-m mt-2 text-gray-600 font-hairline">${jsonallposts[i].price}
+        </p>
+      </div>
+      <div>
+        <p class="text-gray-700 font-bold">Condition
+        </p>
+        <p class="condition text-m mt-2 text-gray-700 font-hairline">${jsonallposts[i].condition}
+        </p>
+      </div>
+      <div>
+        <p class="text-gray-700 font-bold">Delivery Available?
+        </p>
+        <p class="delivery text-m mt-2 text-gray-700 font-hairline">${jsonallposts[i].delivery}
+        </p>
+      </div>
+    </div>
+    <div class="mt-6">
+      <form>
+        <button class="contact-button-${postId} rounded shadow-md w-full items-center shadow font-bold bg-purple-500 px-4 py-2 text-white hover:bg-purple-400">CONTACT INFO</button>
+      </form>  
+    </div>
+  
+    <div class="contact-details-${postId} text-center p-6">  </div>
+  
+    ${comments}
+  
+    <div class="addComment mt-6 border-gray-100 border-t pt-4 flex justify-between">
+      <input placeholder="Add comment" class="comment-${postId} placeholder-gray-300 w-5/6 text-gray-700 focus:outline-none" type="text">
+      <div class="flex">
+        <button class="post-comment-button-${postId} addCommentButton rounded shadow-md items-center shadow font-bold bg-gradient-to-r from-pink-500 to-pink-500 px-4 py-2 text-white hover:bg-purple-500 ">ADD</button>
+    </div>
+    </div>
+    </div>`)
+  
+     // Show contact details dynamically 
+  
+     let contactButton = document.querySelector(`.contact-button-${postId}`)
+    
+     contactButton.addEventListener(`click`, async function(event) {
+   
+       event.preventDefault()
+       
+       console.log("someone clicked contact")
+   
+       let contactdiv = document.querySelector(`.contact-details-${postId}`)
+   
+       contactdiv.innerHTML=`<div class="text-center p-6"> You can reach the owner by email : <strong>${jsonallposts[i].userEmail}<strong></div>`
+   
+   
+      })
+
+      
+  let postCommentButton = document.querySelector(`.post-comment-button-${postId}`)
+
+  postCommentButton.addEventListener(`click`, async function(event) {
+
+    event.preventDefault()
+    
+    console.log("someone clicked")
+    // get a reference to the newly created comment input
+    let commentInput = document.querySelector(`.comment-${postId}`)
+
+    // get the body of the comment
+    let commentBody = commentInput.value
+
+    // Build the URL for our comments API
+
+    let url = `/.netlify/functions/create_comment?userName=${user.displayName}&userId=${user.uid}&postId=${postId}&commentBody=${commentBody}`
+
+    await fetch(url)
+
+    location.reload ()
+
+
+    })
+
+    }
+
+
+
+
     // get a reference to the search button
     let searchButton = document.querySelector(`.search`)
 
@@ -198,9 +337,9 @@ firebase.auth().onAuthStateChanged(async function(user) {
     location.reload ()
 
 
-    }
-    )
+    })
     
+  }
 // --> Old all posts code starts here....
     // fetch all Json posts 
 
@@ -321,7 +460,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
  
  
-}
+
 
   })
 
