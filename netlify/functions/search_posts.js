@@ -19,7 +19,7 @@ console.log(searchCategory)
   let db = firebase.firestore()
 
   // perform a query against firestore for all posts matching the criteria passed through, wait for it to return, store in memory
-  let postsQuery = await db.collection(`posts`).get()
+  let postsQuery = await db.collection(`posts`).orderBy(`created`, `desc`).get()
 //.where(`category`,`==`,searchCategory)
   let posts = postsQuery.docs
 

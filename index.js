@@ -150,7 +150,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
   ${comments}
 
   <div class="addComment mt-6 border-gray-100 border-t pt-4 flex justify-between">
-    <input placeholder="Add comment" class="comment-${postId} placeholder-gray-300 text-gray-700 focus:outline-none" type="text">
+    <input placeholder="Add comment" class="comment-${postId} placeholder-gray-300 w-5/6 text-gray-700 focus:outline-none" type="text">
     <div class="flex">
       <button class="post-comment-button-${postId} addCommentButton rounded shadow-md items-center shadow font-bold bg-gradient-to-r from-pink-500 to-pink-500 px-4 py-2 text-white hover:bg-purple-500 ">ADD</button>
   </div>
