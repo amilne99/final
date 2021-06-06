@@ -91,7 +91,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     
     let comment = post.comments[i]
 
-    comments = comments + `<div> ${comment.userName} : ${comment.body}</div>`
+    comments = comments + `<div><strong>${comment.userName}</strong>: ${comment.body}</div>`
 
   }
   
@@ -145,7 +145,7 @@ firebase.auth().onAuthStateChanged(async function(user) {
     </form>  
   </div>
 
-  <div class="contact-details-${postId} text-center p-6"> <strong> </div>
+  <div class="contact-details-${postId} text-center p-6">  </div>
 
   ${comments}
 
