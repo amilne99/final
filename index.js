@@ -95,11 +95,8 @@ firebase.auth().onAuthStateChanged(async function(user) {
 
   }
   
-  // console.log(post.created)
-  // let dateFunction = Date(post.created.seconds)
-  // //let actualDate = date.getDate()
-  // console.log(dateFunction)
-  // //console.log(actualDate)
+  let postDate = new Date(jsonposts[i].created.seconds * 1000)
+  postDate = postDate.toDateString()
  
   postdiv.insertAdjacentHTML(`beforeend`,`<div class=" postdiv lg:right-1/4 centered bg-white shadow p-4 rounded s:w-full s:mt-4 m:w-full m:mt-4 lg:mx-auto lg:mt-4 lg:w-3/4">
   <div class="text-center mt-4">
@@ -108,8 +105,10 @@ firebase.auth().onAuthStateChanged(async function(user) {
       </p>
   </div>
     <p class="postDescription text-m font-hairline text-gray-600 mt-1">${jsonposts[i].description}
+    <p class="postDate text-m font-hairline text-gray-600 mt-1"><strong>Posted on:</strong> ${postDate}
     </p>
   </div>
+
   <div class="flex justify-center mt-4">
     <img class="postImage shadow w-1/2 h-1/2 sm:w-1/2 sm:h-1/2 square-full" src=${jsonposts[i].imageUrl}>
   </div>

@@ -48,6 +48,7 @@ console.log(searchCategory)
         imageUrl: postData.imageUrl,
         price: postData.price,
         description: postData.description,
+        created: postData.created,
         comments: []
           }
 
